@@ -37,15 +37,18 @@
     }
   })
   const searchPosts = (value: string) => {
-    if (!value) {
+    if (value) {
       filteredPosts.value = posts.value
-      return
+      const query = value.toLowerCase()
+      queries.value = { search: query }
+      filteredPosts.value = posts.value.filter((post) => {
+        return post.title.toLowerCase().includes(query) || post.body.toLowerCase().includes(query)
+      })
+    }else{
+      filteredPosts.value = posts.value
+      queries.value = { search: '' }
     }
-    const query = value.toLowerCase()
-    queries.value = { search: query }
-    filteredPosts.value = posts.value.filter((post) => {
-      return post.title.toLowerCase().includes(query) || post.body.toLowerCase().includes(query)
-    })
+
   }
   const paginationHandler = (page: number) => {
     pagination.page = page
