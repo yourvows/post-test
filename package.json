@@ -29,5 +29,10 @@
     "@nuxtjs/tailwindcss": "^6.11.4",
     "prettier": "3.2.5",
     "shadcn-nuxt": "^0.10.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite-plugin-inspect": "0.7.38"
+    }
   }
 }
